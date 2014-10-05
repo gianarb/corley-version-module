@@ -13,6 +13,20 @@ Bump version 0.0.1
 * Write or edit VERSION file
 * Add version node in your global.php configuration file
 
+## View Helper
+You can use ```$this->version()``` to append the version number in your static resources
+```php
+<html>
+    ...    
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath() . "/js/script.js?v={$this->vesion()}")
+        ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+        ->prependFile($this->basePath() . '/js/jquery.min.js')
+    ; ?>
+    ...
+</html>
+```
+
 ## Configuration
 ```php
 <?php

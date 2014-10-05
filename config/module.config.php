@@ -34,6 +34,11 @@ return array(
             'CorleyVersion\Service\Bump' => 'CorleyVersion\Service\BumpServiceFactory'
         )
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'version' => 'CorleyVersion\View\Helper\VersionHelper',
+        ),
+    ),
     'corley-version' => array(
         'version-file-path' => ".",
         'config-path' => "./config/autoload/global.php",
