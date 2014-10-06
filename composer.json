@@ -15,5 +15,10 @@
         "zendframework/zend-config": ">2.1",
         "zendframework/zend-servicemanager": ">2.1",
         "zendframework/zend-console": ">2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "CorleyVersion": ["src/", "tests"]
+        }
     }
 }
