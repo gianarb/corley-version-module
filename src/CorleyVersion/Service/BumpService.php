@@ -3,14 +3,7 @@ namespace CorleyVersion\Service;
 use Zend\Config\Writer\PhpArray;
 class BumpService
 {
-    private $path;
     private $configPath;
-
-    public function setVersionFilePath($path)
-    {
-        $this->path = $path;
-        return $this;
-    }
 
     public function setConfigPath($path)
     {
