@@ -1,7 +1,7 @@
 <?php
 namespace CorleyVersion;
 
-class Module 
+class Module
 {
 
     public function getConfig()

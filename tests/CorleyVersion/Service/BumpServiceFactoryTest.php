@@ -41,7 +41,6 @@ class BumpServiceFactoryTest extends \PHPUnit_Framework_TestCase
             ->with('Config')
             ->willReturn(["corley-version" => [
                 "config-path" => "somewhere",
-                "version-file-path" => "somewhereelse",
             ]]);
 
         $service = $this->object->createService($this->serviceManager);
@@ -58,8 +57,6 @@ class BumpServiceFactoryTest extends \PHPUnit_Framework_TestCase
             [[]],
             [["something" => []]],
             [["corley-version" => []]],
-            [["corley-version" => ["config-path" => "somewhere"]]],
-            [["corley-version" => ["version-file-path" => "somewhere"]]],
         ];
     }
 }

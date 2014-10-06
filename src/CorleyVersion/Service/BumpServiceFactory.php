@@ -18,7 +18,6 @@ class BumpServiceFactory implements FactoryInterface
 
         $service = new BumpService();
         $service->setConfigPath($versionConfig['config-path']);
-        $service->setVersionFilePath($versionConfig['version-file-path']);
 
         return $service;
     }
@@ -28,7 +27,7 @@ class BumpServiceFactory implements FactoryInterface
         if (array_key_exists("corley-version", $config)) {
             $innerConf = $config["corley-version"];
 
-            if (array_key_exists("config-path", $innerConf) && array_key_exists("version-file-path", $innerConf)) {
+            if (array_key_exists("config-path", $innerConf)) {
                 return false;
             }
         }
