@@ -1,5 +1,7 @@
 Manage version bump in your [Zend Framework](https://github.com/zendframework/zf2) Application
 
+* Master Travis-CI: [![Build Status](https://travis-ci.org/gianarb/corley-version-module.svg)](https://travis-ci.org/gianarb/corley-version-module)
+
 ## Console Command
 ```bash
 php index.php version-show
