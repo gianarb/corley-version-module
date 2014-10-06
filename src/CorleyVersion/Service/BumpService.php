@@ -1,7 +1,7 @@
-<?php 
+<?php
 namespace CorleyVersion\Service;
 use Zend\Config\Writer\PhpArray;
-class BumpService 
+class BumpService
 {
     private $path;
     private $configPath;
@@ -20,11 +20,9 @@ class BumpService
 
     public function bump($version)
     {
-        file_put_contents($this->path.'/VERSION', $version);
-
         $configFile = new \Zend\Config\Config(include $this->configPath, true);
         $configFile->version = $version;
         $configWriter = new PhpArray();
-        $configWriter->toFile($this->configPath, $configFile);
-    } 
+        $configWriter->toFile($this->configPath, $configFile, false);
+    }
 }
