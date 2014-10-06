@@ -9,12 +9,30 @@ class BumpServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $sl)
     {
         $config = $sl->get('Config');
+
+        if ($this->notValidConfiguration($config)) {
+            throw new \InvalidArgumentException("Missing corley-version configuration");
+        }
+
         $versionConfig = $config['corley-version'];
-    
-        $service = new BumpService(); 
+
+        $service = new BumpService();
         $service->setConfigPath($versionConfig['config-path']);
         $service->setVersionFilePath($versionConfig['version-file-path']);
 
         return $service;
+    }
+
+    private function notValidConfiguration($config)
+    {
+        if (array_key_exists("corley-version", $config)) {
+            $innerConf = $config["corley-version"];
+
+            if (array_key_exists("config-path", $innerConf) && array_key_exists("version-file-path", $innerConf)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
