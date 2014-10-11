@@ -43,3 +43,13 @@ return array(
 ```version-file-path``` is path of VERSION file
 
 Write 'version' node into ```config-path```
+
+## Event Driven
+```version-bump <version>``` trigger ```version.bump``` event.
+This module attach only one [listener](https://github.com/gianarb/corley-version-module/blob/feature/event-driven/Module.php)
+```php
+/** @var \Zend\EventManager\EventManager $em */
+$em->getSharedManager()->attach('version' ,'version.bump', function($e){
+    $e->getTarget()->bump($e->getParams()['version']);
+}, 100);
+```

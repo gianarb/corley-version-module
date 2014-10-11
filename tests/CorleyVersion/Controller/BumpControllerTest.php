@@ -49,4 +49,22 @@ class BumpControllerTest extends AbstractConsoleControllerTestCase
         $this->dispatch('version-bump 1.0.2');
         $this->assertConsoleOutputContains("Bumped version '1.0.2'");
     }
+
+    /**
+     * @group functional
+     * @group console
+     * @group bump
+     */
+    public function testBumpTriggerEvent()
+    {
+        $this->setApplicationConfig(include __DIR__ . '/../../app.bump.php');
+        $em = $this->getMock('Zend\\EventManager\\EventManagerInterface');
+
+        $sm = $this->getApplication()->getServiceManager();
+        $sm->setAllowOverride(true);
+        $sm->setService('EventManager', $em);
+
+        $em->expects($this->once())->method('trigger');
+        $this->dispatch('version-bump 1.0.1');
+    }    
 }

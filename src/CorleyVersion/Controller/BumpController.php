@@ -19,8 +19,9 @@ class BumpController extends AbstractConsoleController
     {
         $version = $this->params('version');
         $bumpService = $this->getServiceLocator()->get('CorleyVersion\Service\Bump');
-        $bumpService->bump($version);
-
+        $em = $this->getServiceLocator()->get('EventManager');
+        $em->addIdentifiers(array(__CLASS__, 'version'));
+        $em->trigger('version.bump', $bumpService, array('version' => $version));
         return "Bumped version '{$version}'";
     }
 }

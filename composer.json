@@ -16,7 +16,8 @@
     "require": {
         "zendframework/zend-config": ">2.1",
         "zendframework/zend-servicemanager": ">2.1",
-        "zendframework/zend-console": ">2.1"
+        "zendframework/zend-console": ">2.1",
+        "zendframework/zend-eventmanager": "~2.3"
     },
     "autoload": {
         "psr-0": {
