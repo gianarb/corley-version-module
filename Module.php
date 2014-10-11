@@ -1,6 +1,8 @@
 <?php
 namespace CorleyVersion;
 
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
 
@@ -18,6 +20,14 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function onBootstrap($mvcEvent)
+    {
+        $em = $mvcEvent->getApplication()->getEventManager();
+        $em->getSharedManager()->attach('version' ,'version.bump', function($e){
+            $e->getTarget()->bump($e->getParams()['version']);
+        }, 100);
     }
 
     public function getConsoleUsage($console)
