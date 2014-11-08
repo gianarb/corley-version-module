@@ -11,3 +11,8 @@ before_script:
 
 script:
     - vendor/bin/phpunit
+
+branches:
+  only:
+    - master
+    - develop
