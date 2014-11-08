@@ -4,7 +4,7 @@ return array(
         'invokables' => array(
             'CorleyVersion\Controller\Bump' => 'CorleyVersion\Controller\BumpController'
         )
-   ),    
+   ),
    'console' => array(
         'router' => array(
             'routes' => array(
@@ -28,11 +28,14 @@ return array(
                 )
             )
         )
-    ), 
+    ),
     'service_manager' => array(
         'factories' => array(
-            'CorleyVersion\Service\Bump' => 'CorleyVersion\Service\BumpServiceFactory'
-        )
+            'CorleyVersion\Service\Bump' => 'CorleyVersion\Service\BumpServiceFactory',
+        ),
+        'invokables' => array(
+            'CorleyVersion\Service\PhpArrayConfigWriter' => 'CorleyVersion\Service\PhpArrayConfigWriter',
+        ),
     ),
     'view_helpers' => array(
         'invokables' => array(
@@ -42,5 +45,6 @@ return array(
     'corley-version' => array(
         'version-file-path' => ".",
         'config-path' => "./config/autoload/global.php",
+        'config-writer' => 'CorleyVersion\Service\PhpArrayConfigWriter',
     )
 );

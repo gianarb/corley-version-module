@@ -38,9 +38,14 @@ class BumpServiceFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCommonConfiguration()
     {
         $this->serviceManager->method('get')
+            ->with('CorleyVersion\Service\PhpArrayConfigWriter')
+            ->willReturn(new \CorleyVersion\Service\PhpArrayConfigWriter());
+
+        $this->serviceManager->method('get')
             ->with('Config')
             ->willReturn(["corley-version" => [
                 "config-path" => "somewhere",
+                "config-writer" => 'CorleyVersion\Service\PhpArrayConfigWriter',
             ]]);
 
         $service = $this->object->createService($this->serviceManager);

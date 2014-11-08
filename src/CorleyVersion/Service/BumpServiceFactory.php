@@ -15,9 +15,11 @@ class BumpServiceFactory implements FactoryInterface
         }
 
         $versionConfig = $config['corley-version'];
+        $configWriter = $sl->get($config['corley-version']['config-writer']);
 
         $service = new BumpService();
         $service->setConfigPath($versionConfig['config-path']);
+        $service->setConfigWriter($configWriter->getWriter());
 
         return $service;
     }
@@ -26,8 +28,10 @@ class BumpServiceFactory implements FactoryInterface
     {
         if (array_key_exists("corley-version", $config)) {
             $innerConf = $config["corley-version"];
-
             if (array_key_exists("config-path", $innerConf)) {
+                return false;
+            }
+            if (array_key_exists("config-writer", $innerConf)) {
                 return false;
             }
         }
