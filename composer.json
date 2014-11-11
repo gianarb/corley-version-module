@@ -22,6 +22,9 @@
     "autoload": {
         "psr-0": {
             "CorleyVersion": ["src/", "tests"]
-        }
+        },
+        "classmap": [
+            "./Module.php"
+        ]
     }
 }
