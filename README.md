@@ -21,7 +21,7 @@ You can use ```$this->version()``` to append the version number in your static r
 <html>
     ...    
     <?php echo $this->headScript()
-        ->prependFile($this->basePath() . "/js/script.js?v={$this->vesion()}")
+        ->prependFile($this->basePath() . "/js/script.js?v={$this->version()}")
         ->prependFile($this->basePath() . '/js/bootstrap.min.js')
         ->prependFile($this->basePath() . '/js/jquery.min.js')
     ; ?>
