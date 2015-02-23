@@ -20,8 +20,8 @@
         "zendframework/zend-eventmanager": "~2.3"
     },
     "autoload": {
-        "psr-0": {
-            "CorleyVersion": ["src/", "tests"]
+        "psr-4": {
+            "CorleyVersion\\": ["src/", "tests"]
         },
         "classmap": [
             "./Module.php"
