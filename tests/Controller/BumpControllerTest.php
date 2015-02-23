@@ -13,7 +13,7 @@ class BumpControllerTest extends AbstractConsoleControllerTestCase
      */
     public function testShowErrorOnMissingConfiguration()
     {
-        $this->setApplicationConfig(include __DIR__ . '/../../app.conf.php');
+        $this->setApplicationConfig(include __DIR__ . '/../app.conf.php');
 
         $this->dispatch('version-show');
 
@@ -27,7 +27,7 @@ class BumpControllerTest extends AbstractConsoleControllerTestCase
      */
     public function testShowValidVersionFile()
     {
-        $this->setApplicationConfig(include __DIR__ . '/../../app.complete.php');
+        $this->setApplicationConfig(include __DIR__ . '/../app.complete.php');
 
         $this->dispatch('version-show');
 
@@ -44,7 +44,7 @@ class BumpControllerTest extends AbstractConsoleControllerTestCase
         vfsStream::setup("config/autoload");
         file_put_contents(vfsStream::url("config/autoload/version.local.php"), "<?php return ['version' => ''];");
 
-        $this->setApplicationConfig(include __DIR__ . '/../../app.bump.php');
+        $this->setApplicationConfig(include __DIR__ . '/../app.bump.php');
 
         $this->dispatch('version-bump 1.0.2');
         $this->assertConsoleOutputContains("Bumped version '1.0.2'");
@@ -57,7 +57,7 @@ class BumpControllerTest extends AbstractConsoleControllerTestCase
      */
     public function testBumpTriggerEvent()
     {
-        $this->setApplicationConfig(include __DIR__ . '/../../app.bump.php');
+        $this->setApplicationConfig(include __DIR__ . '/../app.bump.php');
         $em = $this->getMock('Zend\\EventManager\\EventManagerInterface');
 
         $sm = $this->getApplication()->getServiceManager();
